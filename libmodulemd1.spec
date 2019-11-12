@@ -92,7 +92,7 @@ Development files for %{name}.
 %{_bindir}/modulemd-validator-v1
 
 %files -n %{libname}
-%{_libdir}/%{name}.so.%{major}*
+%{_libdir}/libmodulemd.so.%{major}*
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/Modulemd-%{girapi}.typelib
