@@ -99,7 +99,7 @@ Development files for %{name}.
 
 %files -n %{devname}
 %license COPYING
-%{_libdir}/%{name}.so
+%{_libdir}/libmodulemd.so
 %{_datadir}/gir-1.0/Modulemd-%{girapi}.gir
 %{_includedir}/modulemd
 %{_libdir}/pkgconfig/modulemd.pc
