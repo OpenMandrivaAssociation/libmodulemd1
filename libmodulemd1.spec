@@ -2,7 +2,7 @@
 %define girapi %{major}.0
 %define libname %mklibname modulemd %{major}
 %define girname %mklibname modulemd-gir %{girapi}
-%define devname %mklibname modulemd -d
+%define devname %mklibname modulemd%{major} -d
 
 %bcond_without gir
 %bcond_with gtk-doc
@@ -44,7 +44,7 @@ Library for manipulating module v1 metadata files
 %package -n %{girname}
 Summary:	GObject Introspection interface description for libmodulemd%{major}
 Group:		System/Libraries
-Requires:	%{libname}%{?_isa} = %{version}-%{release}
+Requires:	%{libname}%{?_isa} = %{EVRD}
 
 %description -n %{girname}
 GObject Introspection interface description for libmodulemd%{major}.
@@ -52,15 +52,15 @@ GObject Introspection interface description for libmodulemd%{major}.
 %package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C
-Provides:	%{name}-devel%{?_isa} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
-Requires:	%{girname}%{?_isa} = %{version}-%{release}
-Requires:	%{libname}%{?_isa} = %{version}-%{release}
+Provides:	%{name}-devel%{?_isa} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+Requires:	%{girname}%{?_isa} = %{EVRD}
+Requires:	%{libname}%{?_isa} = %{EVRD}
 
 %package -n python-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Python
-Requires:       %{girname}%{?_isa} = %{version}-%{release}
+Requires:       %{girname}%{?_isa} = %{EVRD}
 Requires:       python3dist(pygobject)
 
 %description -n python-%{name}
@@ -80,8 +80,7 @@ Development files for %{name}.
 %if %{without gtk-doc}
 	-Dwith_docs=false \
 %endif
-	-Ddeveloper_build=false \
-	-Dwith_py2_overrides=false
+	-Ddeveloper_build=false
 
 %ninja_build -C build
 
@@ -106,7 +105,3 @@ Development files for %{name}.
 %if %{with gtk-doc}
 %doc %{_datadir}/gtk-doc/html/modulemd-%{girapi}
 %endif
-
-%files -n python-%{name}
-%{py_platsitedir}/gi/overrides/Modulemd.py
-%{py_platsitedir}/gi/overrides/__pycache__/Modulemd.*
