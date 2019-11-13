@@ -57,18 +57,6 @@ Provides:	%{name}-devel = %{EVRD}
 Requires:	%{girname}%{?_isa} = %{EVRD}
 Requires:	%{libname}%{?_isa} = %{EVRD}
 
-%package -n python-%{name}
-Summary:        Python bindings for %{name}
-Group:          Development/Python
-Requires:       %{girname}%{?_isa} = %{EVRD}
-Requires:       python3dist(pygobject)
-
-%description -n python-%{name}
-This package provides the Python 3 bindings for %{name}.
-
-%description -n %{devname}
-Development files for %{name}.
-
 %prep
 %autosetup -p1 -n modulemd-%{version}
 
