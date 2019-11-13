@@ -57,6 +57,9 @@ Provides:	%{name}-devel = %{EVRD}
 Requires:	%{girname}%{?_isa} = %{EVRD}
 Requires:	%{libname}%{?_isa} = %{EVRD}
 
+%description -n %{devname}
+Development files for %{name}.
+
 %prep
 %autosetup -p1 -n modulemd-%{version}
 
