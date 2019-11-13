@@ -8,7 +8,7 @@
 %bcond_with gtk-doc
 
 Summary:	Library for manipulating module v1 metadata files
-Name:		libmodulemd%{major}
+Name:		modulemd%{major}
 Version:	%{major}.8.16
 Release:	1
 Group:		System/Libraries
@@ -30,6 +30,7 @@ BuildRequires:	coreutils
 BuildRequires:	gtk-doc
 %endif
 #BuildRequires:	valgrind
+%rename libmodulemd%{major}
 
 %description
 Library for manipulating module v1 metadata files
@@ -52,8 +53,8 @@ GObject Introspection interface description for libmodulemd%{major}.
 %package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C
-Provides:	%{name}-devel%{?_isa} = %{EVRD}
-Provides:	%{name}-devel = %{EVRD}
+Provides:	lib%{name}-devel%{?_isa} = %{EVRD}
+Provides:	lib%{name}-devel = %{EVRD}
 Requires:	%{girname}%{?_isa} = %{EVRD}
 Requires:	%{libname}%{?_isa} = %{EVRD}
 
